@@ -1,22 +1,19 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "dist/src/server.js",
-      "use": "@vercel/node"
+    "version": 2,
+    "builds": [
+      {
+        "src": "dist/src/server.js",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "dist/src/server.js"
+      }
+    ],
+    "env": {
+      "APP_ENV": "production",
+      "APP_DEBUG": "false"
     }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "dist/src/server.js"
-    }
-  ],
-  "env": {
-    "APP_ENV": "production",
-    "APP_DEBUG": "true"
-  },
-  "build": {
-    "command": "npm run build"
   }
-}
