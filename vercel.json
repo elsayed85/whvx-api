@@ -2,17 +2,21 @@
     "version": 2,
     "builds": [
       {
-        "src": "src/index.ts",
-        "use": "@vercel/node",
-        "config": {
-          "includeFiles": ["src/**/*.ts"]
-        }
+        "src": "dist/src/server.js",
+        "use": "@vercel/node"
       }
     ],
     "routes": [
       {
         "src": "/(.*)",
-        "dest": "src/index.ts"
+        "dest": "dist/src/server.js"
       }
-    ]
+    ],
+    "env": {
+      "APP_ENV": "production",
+      "APP_DEBUG": "true"
+    },
+    "build": {
+      "command": "npm run build"
+    }
   }
