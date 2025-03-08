@@ -2,7 +2,6 @@
 import express from "express";
 import { scrapeFromAllProviders } from "../services/scraperService";
 
-
 const router = express.Router();
 
 router.get("/scrape", async (req, res) => {
@@ -22,12 +21,14 @@ router.get("/scrape", async (req, res) => {
   };
 
   try {
-    // 🔹 Use the extracted `vbtk` token
     const results = await scrapeFromAllProviders(query);
-
     res.json({ results });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error 
+      ? error.message 
+      : 'An unknown error occurred';
+    
+    res.status(500).json({ error: errorMessage });
   }
 });
 
