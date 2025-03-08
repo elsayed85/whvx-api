@@ -4,14 +4,15 @@
   "description": "A Node.js API to scrape movie and show data from multiple providers.",
   "main": "src/server.ts",
   "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
-    "build": "tsc",
-    "start": "node public/server.js"
+    "dev": "vc dev",
+    "deploy": "vc deploy --prod"
   },
   "dependencies": {
+    "@hono/node-server": "^1.13.8",
     "axios": "^1.6.0",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "hono": "^4.7.4",
     "puppeteer": "^24.4.0"
   },
   "devDependencies": {
