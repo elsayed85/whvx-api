@@ -21,9 +21,10 @@ app.get("/health", (req, res) => {
   res.json({ status: "ok", timestamp: new Date().toISOString() });
 });
 
+// Add a root route for testing
 app.get("/", (req, res) => {
-    res.json({ status: "ok", timestamp: new Date().toISOString() });
-  });
+  res.json({ message: "API is running" });
+});
 
 // API routes
 app.use("/api", scraperRoute);
